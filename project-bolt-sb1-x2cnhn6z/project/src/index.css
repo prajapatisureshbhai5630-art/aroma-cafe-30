@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Aroma Cafe color system */
+  --ac-primary: #2b1d17;
+  --ac-secondary: #5a3e2b;
+  --ac-accent: #d4af37;
+  --ac-accent-soft: #e6c659;
+  --ac-bg: #f9f6f1;
+  --ac-surface: rgba(255, 255, 255, 0.08);
+  --ac-text: #ffffff;
+  --ac-text-dim: #d9d9d9;
+  --ac-ink: #2b1d17;
+  --ac-ink-soft: #6b5446;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Poppins', system-ui, sans-serif;
+  --font-btn: 'Montserrat', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: var(--ac-bg);
+  color: var(--ac-ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Hide native cursor on fine pointers in favor of luxury cursor */
+@media (pointer: fine) {
+  .luxury-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+::selection {
+  background: var(--ac-accent);
+  color: var(--ac-primary);
+}
+
+/* ---------- Typography helpers ---------- */
+.font-heading {
+  font-family: var(--font-heading);
+}
+.font-body {
+  font-family: var(--font-body);
+}
+.font-btn {
+  font-family: var(--font-btn);
+}
+
+.text-gold {
+  color: var(--ac-accent);
+}
+.bg-primary {
+  background-color: var(--ac-primary);
+}
+.bg-cream {
+  background-color: var(--ac-bg);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(120deg, #d4af37 0%, #f4e09a 45%, #d4af37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-gradient-cream {
+  background: linear-gradient(120deg, #f9f6f1 0%, #e8ddc9 60%, #d4af37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---------- Glassmorphism ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.glass-dark {
+  background: rgba(43, 29, 23, 0.55);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+}
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+/* ---------- Buttons ---------- */
+.btn-gold {
+  font-family: var(--font-btn);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(120deg, #d4af37, #e6c659);
+  color: #2b1d17;
+  border: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
+}
+.btn-gold:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 44px rgba(212, 175, 55, 0.55);
+}
+.btn-ghost {
+  font-family: var(--font-btn);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-ghost:hover {
+  border-color: var(--ac-accent);
+  color: var(--ac-accent);
+  transform: translateY(-3px);
+}
+
+/* ---------- Hairline divider ---------- */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #1a110d;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #5a3e2b, #d4af37);
+  border-radius: 999px;
+  border: 2px solid #1a110d;
+}
+
+/* ---------- Section heading eyebrow ---------- */
+.eyebrow {
+  font-family: var(--font-btn);
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+/* ---------- Keyframe animations ---------- */
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+@keyframes spinSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-floatY {
+  animation: floatY 6s ease-in-out infinite;
+}
+.animate-spinSlow {
+  animation: spinSlow 24s linear infinite;
+}
+
+/* Shimmering gold skeleton used by loader */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.15) 25%,
+    rgba(212, 175, 55, 0.5) 50%,
+    rgba(212, 175, 55, 0.15) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+/* ---------- Cursor ---------- */
+.ac-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ac-accent);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+}
+.ac-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 175, 55, 0.6);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+.ac-cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.16) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 9990;
+  transform: translate(-50%, -50%);
+  filter: blur(10px);
+}
+
+@media (pointer: coarse) {
+  .ac-cursor,
+  .ac-cursor-ring,
+  .ac-cursor-glow {
+    display: none;
+  }
+}
+
+/* ---------- Utility ---------- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Hide horizontal overflow from 3D / parallax */
+html,
+body {
+  max-width: 100%;
+}
